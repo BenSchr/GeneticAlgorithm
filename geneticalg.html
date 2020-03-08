@@ -1,0 +1,329 @@
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/css/gen.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <title>Genetic Algorithm</title>
+</head>
+
+<body>
+
+    <div class="row align-items-center" style="width: 100%; min-height:100vh; text-align: center;  margin:0;">
+        <div class="col-xl-1 col-12" style="background-color: inherit; "></div>
+        <div class="col-xl-6 col-lg-8 col-12">
+            <div class="row align-items-center" style="width: 100%; text-align: center; height: 100%; margin:0;">
+
+                <!-- CUR GEN -->
+                <div class="col-sm-6 col-12 " style="height:45%; padding:20px">
+
+                    <h5>Current Generation</h5>
+
+                    <div id="curplt" style="max-height: 35vh;"> </div>
+                </div>
+                <!-- ---------------------------------------- -->
+
+                <!-- Fitness Plot -->
+
+                <div class="col-sm-6 col-12 align-self-center" style="height:45%; padding: 20px;">
+                    <h5>Performance</h5>
+
+                    <div id="fitplt" style="max-height: 35vh;"> </div>
+                </div>
+                <!-- ---------------------------------------- -->
+
+                <!-- BEST GEN -->
+
+                <div class="col-12 col-sm-6 " style="height:45%; padding: 20px; ">
+                    <h5>Best Generation</h5>
+                    <div id="bestplt" style="max-height: 35vh;"> </div>
+                </div>
+                <!-- ---------------------------------------- -->
+
+
+
+                <!-- STATS -->
+
+                <div class="col-sm-6 col-12 row align-items-center" style="height:45%; padding: 20px;">
+                    <div class="col-12">
+                        <table class="table" style="width:60%; margin-left:20%;margin-bottom:20px;">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Current Gen</th>
+                                    <td id="stat_curgen">0</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Current Distance</th>
+                                    <td id="stat_curdist">-</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Best Gen</th>
+                                    <td id="stat_bestgen">-</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Best Distance</th>
+                                    <td id="stat_bestdist">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ---------------------------------------- -->
+            </div>
+        </div>
+        <div class="col-lg-1 col-12" style="background-color: inherit; "></div>
+        <div class="col-lg-3 col-12" style=" padding:20px">
+
+            <div class="row align-items-center " style="text-align: left;">
+                <label for="drawOpt" class="col-4 col-form-label">Mode</label>
+                <div class="col-8">
+                    <select class="form-control form-control-md" id="drawOpt">
+                        <option value="circle">Circle</option>
+                        <option value="random">Random</option>
+                    </select></div>
+            </div>
+            <div class="row align-items-center " style="text-align: left;">
+                <label for="nPoints" class="col-4 col-form-label">Points</label>
+                <div class="col-6">
+                    <input type="range" min="10" max="30" value="10" step="5" class="slider" id="nPoints"
+                        oninput="sliderchange(this)"></div>
+                <div class="col-2">10</div>
+            </div>
+            <div class="row align-items-center " style="text-align: left;">
+                <div class="col-12"><button type="button" class="btn btn-dark  btn-lg btn-block" onclick="redraw()">
+                        <i class="fas fa-redo"></i> Redraw</button></div>
+            </div>
+
+            <div class="col-12">
+                <hr style="border-color:grey" />
+            </div>
+
+            <div class="row align-items-center " style="text-align: left;">
+                <label for="populationSize" class="col-4 col-form-label">Population</label>
+                <div class="col-6">
+                    <input type="range" min="10" max="100" value="50" step="5" class="slider" id="populationSize"
+                        oninput="sliderchange(this)"></div>
+                <div class="col-2">50</div>
+            </div>
+            <div class="row align-items-center " style="text-align: left;">
+                <label for="eliteSize" class="col-4  col-form-label">Elite Size [%]</label>
+                <div class="col-6">
+                    <input type="range" min="5" max="100" value="20" step="5" class="slider" id="eliteSize"
+                        oninput="sliderchange(this)"></div>
+                <div class="col-2">20</div>
+            </div>
+            <div class="row align-items-center " style="text-align: left;">
+                <label for="mutationChance" class="col-4  col-form-label">Mutation<br /> Chance [%]</label>
+                <div class="col-6">
+                    <input type="range" min="0" max="100" value="10" step="5" class="slider" id="mutationChance"
+                        oninput="sliderchange(this)"></div>
+                <div class="col-2">10</div>
+            </div>
+
+            <div class="col-12">
+                <hr style="border-color:grey" />
+            </div>
+
+            <button type="button" id="play" class="btn btn-dark btn-lg btn-block" onclick="toggleplay()"><i
+                    class="fas fa-play"></i> Start</button>
+            <button type="button" class="btn  btn-dark btn-lg btn-block" onclick="manStep()"><i
+                    class="fas fa-step-forward"></i> Step</button>
+        </div>
+        <div class="col-sm-1 col-12" style="background-color: inherit; "></div>
+    </div>
+
+    <div id="infobar">
+        
+        <a class="infolink" href="" style="margin-right: 10px;">
+            <i class="fab fa-github-square fa-2x"></i>
+        </a>
+
+        <a class="infolink" href="https://www.linkedin.com/in/benedikt-schr%C3%B6ter-1692a3183/" style="margin-right: 10px;">
+            <i class="fab fa-linkedin fa-2x"></i>
+        </a>
+
+        <a class="infolink" href="https://www.xing.com/profile/Benedikt_Schroeter2/cv" style="margin-right: 10px;">
+            <i class="fab fa-xing-square fa-2x"></i>
+        </a>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/genalg/genpool.js"></script>
+    <script src="./js/genalg/drawer.js"></script>
+    <script>
+
+
+
+        var GA = null
+        var drawer = null
+        var cities = []
+        var drawOption = "circle"
+        var curplt = document.getElementById("curplt")
+        var bestplt = document.getElementById("bestplt")
+        var fitplt = document.getElementById("fitplt")
+
+
+        var stats = {}
+        var genobj = {}
+        var fitstack = []
+
+        var npoints = document.getElementById("nPoints").value; //DataPoints
+        var g = 1   //Generation
+        var p = document.getElementById("populationSize").value  //Population
+        var m = document.getElementById("mutationChance").value  //Mutation
+        var e = document.getElementById("eliteSize").value   //Elite
+
+        var running = false
+        var pauseflag = false
+
+        function pause() {
+            pauseflag = true
+        }
+
+        function manStep() {
+            if (running == false) {
+                oneStep()
+            }
+        }
+
+        function oneStep() {
+            GA.nextStep(g, p, m, e);
+            drawer.drawLines(GA.getCurBestR(), curplt);
+            drawer.drawLines(GA.getBestR(), bestplt);
+            drawer.drawPerformance(GA.getPerf(), fitplt)
+            setStats();
+            g++
+
+        }
+
+        async function start() {
+            running = true
+            pauseflag = false
+            while (g < 1001) {
+                oneStep()
+                await Sleep(100);
+                if (pauseflag) break;
+            }
+            running = false
+        }
+
+        function toggleplay() {
+            if (running == false) {
+                start()
+                document.getElementById("play").innerHTML = "<i class='fas fa-pause'></i> Pause"
+            }
+            else {
+                pause()
+                document.getElementById("play").innerHTML = "<i class='fas fa-play'></i> Start"
+            }
+
+        }
+
+        function redraw() {
+            if (running) { toggleplay() }
+            g = 1
+            GA = new GenAlg()
+            drawer = new Drawer()
+            if (drawOption === "circle") {
+                GA.createCircleCities(npoints)
+            }
+            else { GA.createRandomCities(npoints) }
+            cities = GA.getCities();
+            GA.createFirstPop(p);
+            GA.calcFitness();
+
+            drawer.drawPoints(cities, curplt);
+            drawer.drawPoints(cities, bestplt);
+            drawer.drawPerformance(GA.getPerf(), fitplt)
+        }
+
+
+        function sliderchange(element) {
+            element.parentNode.nextElementSibling.innerHTML = element.value
+        }
+
+        function setStats() {
+            var stats = GA.getStats()
+            document.getElementById("stat_curgen").innerHTML = stats["CurrGen"]
+            document.getElementById("stat_curdist").innerHTML = stats["CurrFit"]
+            document.getElementById("stat_bestgen").innerHTML = stats["BestGen"]
+            document.getElementById("stat_bestdist").innerHTML = stats["BestFit"]
+        }
+
+        function Sleep(milliseconds) {
+            return new Promise(resolve => setTimeout(resolve, milliseconds));
+        }
+
+        $('#drawOpt').change(function () {
+
+            drawOption = this.value
+        });
+
+        $('#nPoints').change(function () {
+            npoints = this.value
+        });
+
+        $('#populationSize').change(function () {
+
+            p = this.value
+        });
+
+        $('#mutationChance').change(function () {
+
+            m = this.value
+        });
+
+        $('#eliteSize').change(function () {
+
+            e = this.value
+        });
+
+
+
+        $(document).ready(function () {
+            redraw();
+        })
+
+
+
+
+    </script>
+
+</body>
+
+</html>

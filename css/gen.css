@@ -1,0 +1,86 @@
+
+html, 
+body {
+    height: 100%;
+	margin: 0;
+    width: 100%;
+	font-family: 'Roboto', sans-serif;
+	background-color: #121212;
+	color:white;
+}
+
+
+	.btn{
+		background-color: #76d275;
+		border-color: #76d275;
+		color:black
+	}
+	
+	#infobar{
+		position: fixed;
+		bottom:50;
+		right:50;
+	}
+
+	.infolink, .infolink:hover,.infolink:active,.infolink:visited{
+		text-decoration: none;
+		color:white;
+	}
+	.infolink i:hover{
+		color:lightgray !important;
+		size: 10;
+	}
+
+
+
+
+
+	  /* SLIDER ---------------*/
+
+	  
+	  .slider {
+		-webkit-appearance: none;
+		width: 100%;
+		max-width: 100%;
+		vertical-align:middle;
+		border-radius: 5px;
+		background: white;
+		outline: none;
+		opacity: 1;
+		-webkit-transition: .2s;
+		transition: opacity .2s;
+		
+	  }
+	  
+	  .slider:hover {
+		opacity: 1;
+	  }
+	  
+	  .slider::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		/* background: rgb(37, 36, 36); */
+		background: #76d275;
+		cursor: pointer;
+	  }
+	  
+	  .slider::-moz-range-thumb {
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		background: rgb(37, 36, 36);
+		background: white;
+		cursor: pointer;
+	  }
+
+	  /* SLIDER-END ------------*/
+	  
+
+	  .col-form-label{
+		font-weight: bold;
+	  }
+
+	
