@@ -17,18 +17,17 @@ body {
 	}
 	
 	#infobar{
-		position: fixed;
+		position: absolute;;
 		bottom:50;
 		right:50;
 	}
 
 	.infolink, .infolink:hover,.infolink:active,.infolink:visited{
 		text-decoration: none;
-		color:white;
+		color:white !important;
 	}
 	.infolink i:hover{
 		color:lightgray !important;
-		size: 10;
 	}
 
 
