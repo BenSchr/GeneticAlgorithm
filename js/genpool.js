@@ -33,7 +33,7 @@ class GenAlg {
 
     }
 
-    nextStep(g, p, m, e) {
+    nextStep(g, p, m, e,r) {
         this.genobj["OldGen"] = JSON.parse(JSON.stringify(this.genobj["CurrGen"]));
         this.genobj["CurrGen"]["Generation"] = g
         this.genobj["CurrGen"]["Pop"] = []
@@ -41,7 +41,7 @@ class GenAlg {
         var esize = Math.ceil(this.genobj["OldGen"]["Pop"].length * (e / 100))
         esize = (esize < 2) ? 2 : esize;
         var elite = this.genobj["OldGen"]["Pop"].slice(0, esize);
-        this.newPopulation(elite, p, m)
+        this.newPopulation(elite, p, m,r)
 
         if (this.genobj["CurrGen"]["BestFit"] < this.genobj["BestGen"]["BestFit"]) {
             this.genobj["BestGen"] = JSON.parse(JSON.stringify(this.genobj["CurrGen"]));
@@ -50,9 +50,17 @@ class GenAlg {
         this.performance["y"].push(this.genobj["CurrGen"]["BestFit"])
     }
 
-    newPopulation(elite, p, m) {
-
-        for (var i = 0; i < p; i++) {
+    newPopulation(elite, p, m,r) {
+        var nRandom=Math.ceil(this.genobj["OldGen"]["Pop"].length * (r / 100))
+        for (var i=0; i<nRandom;i++){
+            var singlePop = {}
+            singlePop["Route"] = []
+            singlePop["Fit"] = 0
+            singlePop["Route"] = this.shuffleCities(this.cities)
+            this.genobj["CurrGen"]["Pop"].push(singlePop)
+        }
+        
+        for (var i = 0; i < (p-nRandom); i++) {
             elite = this.shuffleCities(elite)
             var par1 = elite[0]
             var par2 = elite[1]
@@ -63,6 +71,7 @@ class GenAlg {
             singlePop["Route"] = child
             this.genobj["CurrGen"]["Pop"].push(singlePop)
         }
+        
         this.calcFitness()
     }
 

@@ -6,8 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./css/gen.css">
 
@@ -118,18 +122,25 @@
                 <div class="col-2">50</div>
             </div>
             <div class="row align-items-center " style="text-align: left;">
-                <label for="eliteSize" class="col-4  col-form-label">Elite Size [%]</label>
+                <label for="eliteSize" class="col-4  col-form-label">Elite [%]</label>
                 <div class="col-6">
                     <input type="range" min="5" max="100" value="20" step="5" class="slider" id="eliteSize"
                         oninput="sliderchange(this)"></div>
                 <div class="col-2">20</div>
             </div>
             <div class="row align-items-center " style="text-align: left;">
-                <label for="mutationChance" class="col-4  col-form-label">Mutation<br /> Chance [%]</label>
+                <label for="mutationChance" class="col-4  col-form-label">Mutation [%]</label>
                 <div class="col-6">
                     <input type="range" min="0" max="100" value="10" step="5" class="slider" id="mutationChance"
                         oninput="sliderchange(this)"></div>
                 <div class="col-2">10</div>
+            </div>
+            <div class="row align-items-center " style="text-align: left;">
+                <label for="randomP" class="col-4  col-form-label">Random [%]</label>
+                <div class="col-6">
+                    <input type="range" min="0" max="100" value="0" step="5" class="slider" id="randomP"
+                        oninput="sliderchange(this)"></div>
+                <div class="col-2">0</div>
             </div>
 
             <div class="col-12">
@@ -146,7 +157,8 @@
 
     <div id="infobar">
 
-        <a class="infolink" href="https://github.com/BenSchr/GeneticAlgorithm" target="_blank" style="margin-right: 10px;">
+        <a class="infolink" href="https://github.com/BenSchr/GeneticAlgorithm" target="_blank"
+            style="margin-right: 10px;">
             <i class="fab fa-github-square fa-2x"></i>
         </a>
 
@@ -162,6 +174,16 @@
     </div>
     </div>
 
+    <div class="toast" data-autohide="false" style="position:absolute; top:30;right:30">
+        <div class="toast-header" style="background-color: rgb(233, 106, 106); color:white;border-color: inherit;">
+            <strong class="mr-auto">Cool!</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" style="color:white">&times;</button>
+        </div>
+        <div class="toast-body" style="color:black">
+            You reached the maximum of 1000 Generations. You can redraw and start over! :)
+        </div>
+    </div>
+    </div>
 
 
 
@@ -173,18 +195,8 @@
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
     <script src="./js/genpool.js"></script>
     <script src="./js/drawer.js"></script>
     <script>
@@ -209,12 +221,14 @@
         var p = document.getElementById("populationSize").value  //Population
         var m = document.getElementById("mutationChance").value  //Mutation
         var e = document.getElementById("eliteSize").value   //Elite
+        var r = document.getElementById("randomP").value  //Random 
 
         var running = false
         var pauseflag = false
 
         function pause() {
             pauseflag = true
+            document.getElementById("play").innerHTML = "<i class='fas fa-play'></i> Start"
         }
 
         function manStep() {
@@ -224,7 +238,7 @@
         }
 
         function oneStep() {
-            GA.nextStep(g, p, m, e);
+            GA.nextStep(g, p, m, e, r);
             drawer.drawLines(GA.getCurBestR(), curplt);
             drawer.drawLines(GA.getBestR(), bestplt);
             drawer.drawPerformance(GA.getPerf(), fitplt)
@@ -236,22 +250,24 @@
         async function start() {
             running = true
             pauseflag = false
+            document.getElementById("play").innerHTML = "<i class='fas fa-pause'></i> Pause"
             while (g < 1001) {
                 oneStep()
                 await Sleep(100);
                 if (pauseflag) break;
             }
+            $('.toast').toast('show');
             running = false
+            document.getElementById("play").innerHTML = "<i class='fas fa-play'></i> Start"
         }
 
         function toggleplay() {
             if (running == false) {
                 start()
-                document.getElementById("play").innerHTML = "<i class='fas fa-pause'></i> Pause"
             }
             else {
                 pause()
-                document.getElementById("play").innerHTML = "<i class='fas fa-play'></i> Start"
+
             }
 
         }
@@ -305,6 +321,10 @@
             p = this.value
         });
 
+        $('#randomP').change(function () {
+            r = this.value
+        });
+
         $('#mutationChance').change(function () {
 
             m = this.value
@@ -315,6 +335,9 @@
             e = this.value
         });
 
+        $("#myBtn").click(function () {
+            
+        });
 
 
         $(document).ready(function () {
