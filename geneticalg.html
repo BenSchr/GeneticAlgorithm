@@ -174,13 +174,13 @@
     </div>
     </div>
 
-    <div class="toast" data-autohide="false" style="position:absolute; top:30;right:30">
+    <div class="toast" data-autohide="false" style="position:fixed; top:30;right:30">
         <div class="toast-header" style="background-color: rgb(233, 106, 106); color:white;border-color: inherit;">
-            <strong class="mr-auto">Cool!</strong>
+            <strong class="mr-auto"><i class="fas fa-trophy"></i> Cool!</strong>
             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" style="color:white">&times;</button>
         </div>
         <div class="toast-body" style="color:black">
-            You reached the maximum of 1000 Generations. You can redraw and start over! :)
+            You reached the maximum of 1000 generations. You can <i class="fas fa-redo fa-sm"></i> redraw and start over! &#128527;
         </div>
     </div>
     </div>
@@ -210,7 +210,7 @@
         var curplt = document.getElementById("curplt")
         var bestplt = document.getElementById("bestplt")
         var fitplt = document.getElementById("fitplt")
-
+        var limit=1001
 
         var stats = {}
         var genobj = {}
@@ -251,12 +251,12 @@
             running = true
             pauseflag = false
             document.getElementById("play").innerHTML = "<i class='fas fa-pause'></i> Pause"
-            while (g < 1001) {
+            while (g < limit) {
                 oneStep()
                 await Sleep(100);
                 if (pauseflag) break;
             }
-            $('.toast').toast('show');
+            if (g >= limit) $('.toast').toast('show');
             running = false
             document.getElementById("play").innerHTML = "<i class='fas fa-play'></i> Start"
         }
@@ -336,7 +336,7 @@
         });
 
         $("#myBtn").click(function () {
-            
+
         });
 
 
