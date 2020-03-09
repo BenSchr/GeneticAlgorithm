@@ -17,6 +17,7 @@ body {
 	}
 	
 	#infobar{
+	
 		position: absolute;;
 		bottom:3%;
 		right:3%;
@@ -28,6 +29,16 @@ body {
 	}
 	.infolink i:hover{
 		color:lightgray !important;
+	}
+
+	.helplink,.helplink:active,.helplink:visited{
+		text-decoration: none;
+		color:white !important;
+	}
+	.helplink:hover{
+		text-decoration: none;
+		background-color: white;
+		color:black !important;
 	}
 
 
@@ -89,6 +100,12 @@ body {
 		right:30;
 	}
 
+	#help{
+		
+		color:white; margin-top: 10px; display: inline-block;
+		border: white solid 0.5px; padding: 5px 10px;
+	}
+
 	@media screen and (max-width: 1024px) {
 
 	#stattable{
@@ -106,10 +123,12 @@ body {
 	}
 
 	#infobar{
+		width:100vw;
 		position: inherit;
 		text-align: center;
-		height:5vh;
+		height:8vh;
 		margin-bottom: 20px;
+		padding-left:15px;
 	}
 
 	}

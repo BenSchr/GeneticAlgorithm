@@ -23,7 +23,7 @@
 </head>
 
 <body>
-
+    
     <div class="row align-items-center" style="width: 100%; min-height:100vh; text-align: center;  margin:0;">
         <div class="col-xl-1 col-12" style="background-color: inherit; "></div>
         <div class="col-xl-6 col-lg-8 col-12">
@@ -151,12 +151,16 @@
                     class="fas fa-play"></i> Start</button>
             <button type="button" class="btn  btn-dark btn-lg btn-block" onclick="manStep()"><i
                     class="fas fa-step-forward"></i> Step</button>
+                
+                
+                    <a class="helplink" id="help" href="https://benschr.github.io/GeneticAlgorithm" target="_blank">  <i class="fas fa-question-circle fa-lg"></i>  Help</a>
         </div></div>
+        
         <div class="col-md-1 col-12" style="background-color: inherit; "></div>
     </div>
 
     <div id="infobar">
-
+        
         <a class="infolink" href="https://github.com/BenSchr/GeneticAlgorithm" target="_blank"
             style="margin-right: 10px;">
             <i class="fab fa-github-square fa-2x"></i>
@@ -177,6 +181,8 @@
             <i class="fas fa-square fa-stack-2x"></i>
             <i class="fas fa-globe fa-stack-1x fa-inverse" style="color:#121212"></i>
           </span></a>
+
+          
     </div>
     </div>
 
@@ -280,6 +286,8 @@
 
         function redraw() {
             if (running) { toggleplay() }
+            running = false
+            pauseflag = true
             g = 1
             GA = new GenAlg()
             drawer = new Drawer()
