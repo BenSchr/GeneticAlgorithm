@@ -1,3 +1,11 @@
+<style>
+
+body{
+    background-color:black;
+}
+
+</style>
+
 # GeneticAlgorithm
 
 Website presenting the Genetic Algorithm solution for the salesperson problem.
