@@ -8,6 +8,7 @@ Link: [Website](https://benschr.github.io/GeneticAlgorithm/geneticalg.html)
 
 ### Controls
 
+
 - **Mode:** You can choose between circle and random points    
 - **Points:** Number of points  
 - **Redraw:** Refreshs the graphs with new settings  
@@ -19,6 +20,7 @@ Link: [Website](https://benschr.github.io/GeneticAlgorithm/geneticalg.html)
 - **Mutation:** Chance of a reproduced child getting a mutation. In this case, two random points are swapped
 - **Random:** Percentage of population that is fully random each generation
    
+<br/> 
    
 - **Start:** Start/Stop the autoplay function. Limits at generation 1000  
 - **Step:** Steps one generation forward
