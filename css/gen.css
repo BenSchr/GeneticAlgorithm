@@ -18,8 +18,8 @@ body {
 	
 	#infobar{
 		position: absolute;;
-		bottom:50;
-		right:50;
+		bottom:3%;
+		right:3%;
 	}
 
 	.infolink, .infolink:hover,.infolink:active,.infolink:visited{
@@ -29,7 +29,6 @@ body {
 	.infolink i:hover{
 		color:lightgray !important;
 	}
-
 
 
 
@@ -83,3 +82,42 @@ body {
 	  }
 
 	.table{color:white}
+
+	.toast{
+		position:fixed;
+		top:30;
+		right:30;
+	}
+
+	@media screen and (max-width: 1024px) {
+
+	#stattable{
+		font-size: 0.8em;
+		white-space: nowrap;
+	}
+
+	#controlpanel *{
+		font-size:1em;
+		white-space: nowrap;
+	}
+
+	.spacer{
+		display:none
+	}
+
+	#infobar{
+		position: inherit;
+		text-align: center;
+		height:5vh;
+		margin-bottom: 20px;
+	}
+
+	}
+	@media screen and (max-width: 400px) {
+		.toast{
+			width:100vw;
+			top:0;
+			right:0;
+		}
+
+	}
