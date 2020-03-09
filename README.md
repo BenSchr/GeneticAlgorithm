@@ -11,8 +11,9 @@ Link: [Website](https://benschr.github.io/GeneticAlgorithm/geneticalg.html)
 - **Mode:** You can choose between circle and random points    
 - **Points:** Number of points  
 - **Redraw:** Refreshs the graphs with new settings  
-  
-  
+
+<br/> 
+
 - **Population:** Number of members per generation 
 - **Elite:** Control the percentage of the fittest members that can reproduce/crossover
 - **Mutation:** Chance of a reproduced child getting a mutation. In this case, two random points are swapped
