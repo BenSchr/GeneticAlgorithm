@@ -3,6 +3,7 @@
 Website presenting the Genetic Algorithm solution for the salesperson problem.
 
 
+![](/img/thumbnail.png)
 <a href="https://benschr.github.io/GeneticAlgorithm/geneticalg.html"><img src="/img/thumbnail.png" title="WebsiteImage" alt="WebsiteImage"></a>
 
 **Link**: [Website](https://benschr.github.io/GeneticAlgorithm/geneticalg.html)    
