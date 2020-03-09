@@ -2,7 +2,11 @@
 
 Website presenting the Genetic Algorithm solution for the salesperson problem.
 
-**Link**: [Website](https://benschr.github.io/GeneticAlgorithm/geneticalg.html)
+
+<a href="https://benschr.github.io/GeneticAlgorithm/geneticalg.html"><img src="./img/website.jpg" title="WebsiteImage" alt="WebsiteImage"></a>
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+
+**Link**: [Website](https://benschr.github.io/GeneticAlgorithm/geneticalg.html)  
 **Blog**: TBA
 
 ## Controls
