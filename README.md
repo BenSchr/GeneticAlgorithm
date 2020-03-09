@@ -1,6 +1,3 @@
-# Genetic Algorithm
-
-Website presenting the Genetic Algorithm solution for the salesperson problem.
 
 
 ![](/img/thumbnail.png)
@@ -33,7 +30,7 @@ The algorithm starts in generation zero with a population of completely randomly
 The 'Elite' parameter is used to determine the percentage of the fittest members that are allowed to reproduce. When crossing the genes of the parents, the child receives a portion of each parent's route, resulting in a combined route with a hopefully shorter distance.
 This is repeated until the new population is completely filled.
 
-### Diversity is the key
+## Diversity is the key
 
 After several generations, the algorithm has calculated the best possible routes from the random initial population and stagnates. To prevent this, the parameters 'Mutation' and 'Random' can be set.  
 The mutation causes children to randomly swap two places on the route after they have been generated, thus generating a new route that was not previously in the gene pool.  
