@@ -33,7 +33,7 @@ The salesperson problem defines the requirement to calculate the shortest possib
 
 A brute force solution to this problem in which you would test every existing combination would take a huge amount of tries.
 
-<img src="/img/bruteforce.JPG" width="50%"/>
+<img src="https://github.com/BenSchr/GeneticAlgorithm/img/bruteforce.JPG" width="50%"/>
 <!-- ![](/img/bruteforce.JPG) -->
 
 
@@ -41,14 +41,15 @@ A brute force solution to this problem in which you would test every existing co
 
 ### 0. Composition
 
-![](/img/composition.JPG)
+<img src="https://github.com/BenSchr/GeneticAlgorithm/img/composition.JPG" width="50%"/>
+<!-- ![](/img/composition.JPG) -->
 
 
 ### 1. Generation Zero
 
 The algorithm starts in generation zero with a population of completely randomly generated members.
-
-![](/img/thumbnail.png)
+<img src="https://github.com/BenSchr/GeneticAlgorithm/img/thumbnail.png" width="50%"/>
+<!-- ![](/img/thumbnail.png) -->
 
 
 
