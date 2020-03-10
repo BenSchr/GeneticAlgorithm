@@ -1,6 +1,6 @@
 
 
-![](/img/thumbnail.png)
+![](/img/thumbnail.JPG)
 
 
 **Link**: [Website](https://benschr.github.io/GeneticAlgorithm/geneticalg.html)    
