@@ -5,6 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Sharing is caring -->
+    <meta property="og:site_name" content="Genetic Algorithm" />
+    <meta property="og:description" content="Try out the Genetic Algorithm on your own at this awesome page!"/>
+    <meta property="og:image" content="https://github.com/BenSchr/GeneticAlgorithm/blob/master/img/thumbnail.JPG?raw=true">
+    <meta property="og:url" content="https://benschr.github.io/GeneticAlgorithm/geneticalg.html">
+    <meta property="og:type" content="website"/>
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <!-- Optional JavaScript -->
@@ -23,7 +30,7 @@
 </head>
 
 <body>
-    
+
     <div class="row align-items-center" style="width: 100%; min-height:100vh; text-align: center;  margin:0;">
         <div class="col-xl-1 col-12" style="background-color: inherit; "></div>
         <div class="col-xl-6 col-lg-8 col-12">
@@ -89,78 +96,80 @@
         </div>
         <div class="col-lg-1 spacer" style="background-color: inherit; "></div>
         <div class="col-lg-4 col-xl-3 col-12" style=" padding:20px">
-<div id="controlpanel">
-            <div  class="row align-items-center " style="text-align: left;">
-                <label for="drawOpt" class="col-4 col-form-label">Mode</label>
-                <div class="col-8">
-                    <select class="form-control form-control-md" id="drawOpt">
-                        <option value="circle">Circle</option>
-                        <option value="random">Random</option>
-                    </select></div>
-            </div>
-            <div class="row align-items-center " style="text-align: left;">
-                <label for="nPoints" class="col-4 col-form-label">Points</label>
-                <div class="col-6">
-                    <input type="range" min="10" max="30" value="10" step="5" class="slider" id="nPoints"
-                        oninput="sliderchange(this)"></div>
-                <div class="col-2">10</div>
-            </div>
-            <div class="row align-items-center " style="text-align: left;">
-                <div class="col-12"><button type="button" class="btn btn-dark  btn-lg btn-block" onclick="redraw()">
-                        <i class="fas fa-redo"></i> Redraw</button></div>
-            </div>
+            <div id="controlpanel">
+                <div class="row align-items-center " style="text-align: left;">
+                    <label for="drawOpt" class="col-4 col-form-label">Mode</label>
+                    <div class="col-8">
+                        <select class="form-control form-control-md" id="drawOpt">
+                            <option value="circle">Circle</option>
+                            <option value="random">Random</option>
+                        </select></div>
+                </div>
+                <div class="row align-items-center " style="text-align: left;">
+                    <label for="nPoints" class="col-4 col-form-label">Points</label>
+                    <div class="col-6">
+                        <input type="range" min="10" max="30" value="10" step="5" class="slider" id="nPoints"
+                            oninput="sliderchange(this)"></div>
+                    <div class="col-2">10</div>
+                </div>
+                <div class="row align-items-center " style="text-align: left;">
+                    <div class="col-12"><button type="button" class="btn btn-dark  btn-lg btn-block" onclick="redraw()">
+                            <i class="fas fa-redo"></i> Redraw</button></div>
+                </div>
 
-            <div class="col-12">
-                <hr style="border-color:grey" />
-            </div>
+                <div class="col-12">
+                    <hr style="border-color:grey" />
+                </div>
 
-            <div class="row align-items-center " style="text-align: left;">
-                <label for="populationSize" class="col-4 col-form-label">Population</label>
-                <div class="col-6">
-                    <input type="range" min="10" max="100" value="50" step="5" class="slider" id="populationSize"
-                        oninput="sliderchange(this)"></div>
-                <div class="col-2">50</div>
-            </div>
-            <div class="row align-items-center " style="text-align: left;">
-                <label for="eliteSize" class="col-4  col-form-label">Elite [%]</label>
-                <div class="col-6">
-                    <input type="range" min="5" max="100" value="20" step="5" class="slider" id="eliteSize"
-                        oninput="sliderchange(this)"></div>
-                <div class="col-2">20</div>
-            </div>
-            <div class="row align-items-center " style="text-align: left;">
-                <label for="mutationChance" class="col-4  col-form-label">Mutation [%]</label>
-                <div class="col-6">
-                    <input type="range" min="0" max="100" value="10" step="5" class="slider" id="mutationChance"
-                        oninput="sliderchange(this)"></div>
-                <div class="col-2">10</div>
-            </div>
-            <div class="row align-items-center " style="text-align: left;">
-                <label for="randomP" class="col-4  col-form-label">Random [%]</label>
-                <div class="col-6">
-                    <input type="range" min="0" max="100" value="0" step="5" class="slider" id="randomP"
-                        oninput="sliderchange(this)"></div>
-                <div class="col-2">0</div>
-            </div>
+                <div class="row align-items-center " style="text-align: left;">
+                    <label for="populationSize" class="col-4 col-form-label">Population</label>
+                    <div class="col-6">
+                        <input type="range" min="10" max="100" value="50" step="5" class="slider" id="populationSize"
+                            oninput="sliderchange(this)"></div>
+                    <div class="col-2">50</div>
+                </div>
+                <div class="row align-items-center " style="text-align: left;">
+                    <label for="eliteSize" class="col-4  col-form-label">Elite [%]</label>
+                    <div class="col-6">
+                        <input type="range" min="5" max="100" value="20" step="5" class="slider" id="eliteSize"
+                            oninput="sliderchange(this)"></div>
+                    <div class="col-2">20</div>
+                </div>
+                <div class="row align-items-center " style="text-align: left;">
+                    <label for="mutationChance" class="col-4  col-form-label">Mutation [%]</label>
+                    <div class="col-6">
+                        <input type="range" min="0" max="100" value="10" step="5" class="slider" id="mutationChance"
+                            oninput="sliderchange(this)"></div>
+                    <div class="col-2">10</div>
+                </div>
+                <div class="row align-items-center " style="text-align: left;">
+                    <label for="randomP" class="col-4  col-form-label">Random [%]</label>
+                    <div class="col-6">
+                        <input type="range" min="0" max="100" value="0" step="5" class="slider" id="randomP"
+                            oninput="sliderchange(this)"></div>
+                    <div class="col-2">0</div>
+                </div>
 
-            <div class="col-12">
-                <hr style="border-color:grey" />
-            </div>
+                <div class="col-12">
+                    <hr style="border-color:grey" />
+                </div>
 
-            <button type="button" id="play" class="btn btn-dark btn-lg btn-block" onclick="toggleplay()"><i
-                    class="fas fa-play"></i> Start</button>
-            <button type="button" class="btn  btn-dark btn-lg btn-block" onclick="manStep()"><i
-                    class="fas fa-step-forward"></i> Step</button>
-                
-                
-                    <a class="helplink" id="help" href="https://benschr.github.io/GeneticAlgorithm" target="_blank">  <i class="fas fa-question-circle fa-lg"></i>  Help</a>
-        </div></div>
-        
+                <button type="button" id="play" class="btn btn-dark btn-lg btn-block" onclick="toggleplay()"><i
+                        class="fas fa-play"></i> Start</button>
+                <button type="button" class="btn  btn-dark btn-lg btn-block" onclick="manStep()"><i
+                        class="fas fa-step-forward"></i> Step</button>
+
+
+                <a class="helplink" id="help" href="https://benschr.github.io/GeneticAlgorithm" target="_blank"> <i
+                        class="fas fa-question-circle fa-lg"></i> Help</a>
+            </div>
+        </div>
+
         <div class="col-md-1 col-12" style="background-color: inherit; "></div>
     </div>
 
     <div id="infobar">
-        
+
         <a class="infolink" href="https://github.com/BenSchr/GeneticAlgorithm" target="_blank"
             style="margin-right: 10px;">
             <i class="fab fa-github-square fa-2x"></i>
@@ -176,14 +185,14 @@
             <i class="fab fa-xing-square fa-2x"></i>
         </a>
         <a class="infolink" href="https://github.com/BenSchr/" target="_blank"
-        style="margin-right: 10px; margin-left:-5px">
-        <span class="fa-stack" style="vertical-align: top;">
-            <i class="fas fa-square fa-stack-2x"></i>
-            <i class="fas fa-globe fa-stack-1x fa-inverse" style="color:#121212"></i>
-          </span></a>
+            style="margin-right: 10px; margin-left:-5px">
+            <span class="fa-stack" style="vertical-align: top;">
+                <i class="fas fa-square fa-stack-2x"></i>
+                <i class="fas fa-globe fa-stack-1x fa-inverse" style="color:#121212"></i>
+            </span></a>
 
-          
-    </div> 
+
+    </div>
     </div>
 
     <div class="toast" data-autohide="false">
@@ -192,7 +201,8 @@
             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" style="color:white">&times;</button>
         </div>
         <div class="toast-body" style="color:black">
-            You reached the maximum of 1000 generations. You can <i class="fas fa-redo fa-sm"></i> redraw and start over! &#128527;
+            You reached the maximum of 1000 generations. You can <i class="fas fa-redo fa-sm"></i> redraw and start
+            over! &#128527;
         </div>
     </div>
     </div>
@@ -213,7 +223,7 @@
         var curplt = document.getElementById("curplt")
         var bestplt = document.getElementById("bestplt")
         var fitplt = document.getElementById("fitplt")
-        var limit=1001
+        var limit = 1001
 
         var stats = {}
         var genobj = {}
