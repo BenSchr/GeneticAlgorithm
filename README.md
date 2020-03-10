@@ -74,5 +74,5 @@ After several generations, the algorithm has calculated the best possible routes
 The mutation causes children to randomly swap two places on the route after they have been generated, thus generating a new route that was not previously in the gene pool.  
 With the 'Random' parameter, completely new random members can be added to the population to refresh the gene pool. 
 
-<img src="https://github.com/BenSchr/GeneticAlgorithm/blob/master/img/mutation.JPG?raw=true" width="80%"/>
+<img src="https://github.com/BenSchr/GeneticAlgorithm/blob/master/img/mutation.JPG?raw=true" width="60%"/>
 
