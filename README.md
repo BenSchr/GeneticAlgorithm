@@ -54,14 +54,14 @@ The algorithm starts in generation zero with a population of completely randomly
 <img src="https://github.com/BenSchr/GeneticAlgorithm/blob/master/img/elite.JPG?raw=true" width="80%"/>
 
 
-### Elite-Size
+### 2. Elite-Size
 
 The 'Elite' parameter is used to determine the percentage of the fittest members that are allowed to reproduce. 
 
 <img src="https://github.com/BenSchr/GeneticAlgorithm/blob/master/img/gen0.JPG?raw=true" width="80%"/>
 
 
-### Crossover
+### 3. Crossover
 
 When crossing the genes of the parents, the child receives a portion of each parent's route, resulting in a combined route with a hopefully shorter distance.
 This is repeated until the new population is completely filled.
