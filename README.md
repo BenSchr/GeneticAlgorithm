@@ -33,7 +33,7 @@ The salesperson problem defines the requirement to calculate the shortest possib
 
 A brute force solution to this problem in which you would test every existing combination would take a huge amount of tries.
 
-<img src="https://github.com/BenSchr/GeneticAlgorithm/img/bruteforce.JPG" width="50%"/>
+<img src="https://github.com/BenSchr/GeneticAlgorithm/blob/master/img/bruteforce.JPG?raw=true" width="50%"/>
 <!-- ![](/img/bruteforce.JPG) -->
 
 
@@ -41,14 +41,14 @@ A brute force solution to this problem in which you would test every existing co
 
 ### 0. Composition
 
-<img src="https://github.com/BenSchr/GeneticAlgorithm/img/composition.JPG" width="50%"/>
+<img src="https://github.com/BenSchr/GeneticAlgorithm/blob/master/img/composition.JPG?raw=true" width="50%"/>
 <!-- ![](/img/composition.JPG) -->
 
 
 ### 1. Generation Zero
 
-The algorithm starts in generation zero with a population of completely randomly generated members.
-<img src="https://github.com/BenSchr/GeneticAlgorithm/img/thumbnail.png" width="50%"/>
+The algorithm starts in generation zero with a population of completely randomly generated members.  
+<img src="https://github.com/BenSchr/GeneticAlgorithm/blob/master/img/gen0.JPG?raw=true" width="50%"/>
 <!-- ![](/img/thumbnail.png) -->
 
 
@@ -62,4 +62,6 @@ This is repeated until the new population is completely filled.
 After several generations, the algorithm has calculated the best possible routes from the random initial population and stagnates. To prevent this, the parameters 'Mutation' and 'Random' can be set.  
 The mutation causes children to randomly swap two places on the route after they have been generated, thus generating a new route that was not previously in the gene pool.  
 With the 'Random' parameter, completely new random members can be added to the population to refresh the gene pool. 
+
+<img src="https://github.com/BenSchr/GeneticAlgorithm/blob/master/img/mutation.JPG?raw=true" width="50%"/>
 
