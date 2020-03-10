@@ -33,7 +33,8 @@ The salesperson problem defines the requirement to calculate the shortest possib
 
 A brute force solution to this problem in which you would test every existing combination would take a huge amount of tries.
 
-![](/img/bruteforce.JPG | width="50")
+<img src="/img/bruteforce.JPG" width="50%"/>
+<!-- ![](/img/bruteforce.JPG) -->
 
 
 ## Computaion
