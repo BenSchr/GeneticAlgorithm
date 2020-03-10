@@ -24,9 +24,34 @@
 - **Start:** Start/Stop the autoplay function. Limits at generation 1000  
 - **Step:** Steps one generation forward
 
+
+## Salesperson Problem
+
+The salesperson problem defines the requirement to calculate the shortest possible distance between a set of points.
+
+## Brute Force
+
+A brute force solution to this problem in which you would test every existing combination would take a huge amount of tries.
+
+![](/img/bruteforce.JPG | width="50")
+
+
 ## Computaion
 
-The algorithm starts in generation zero with a population of completely randomly generated members. To order them, the distance of the track is measured. The members with the lowest distance have the highest fitness.
+### 0. Composition
+
+![](/img/composition.JPG)
+
+
+### 1. Generation Zero
+
+The algorithm starts in generation zero with a population of completely randomly generated members.
+
+![](/img/thumbnail.png)
+
+
+
+To order them, the distance of the track is measured. The members with the lowest distance have the highest fitness.
 The 'Elite' parameter is used to determine the percentage of the fittest members that are allowed to reproduce. When crossing the genes of the parents, the child receives a portion of each parent's route, resulting in a combined route with a hopefully shorter distance.
 This is repeated until the new population is completely filled.
 
