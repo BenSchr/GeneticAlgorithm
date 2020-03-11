@@ -51,14 +51,14 @@ Since we want to calculate the shortest possible route, each member of the popul
 ### 1. Generation Zero
 
 The algorithm starts in generation zero with a population of completely randomly generated members.  
-<img src="https://github.com/BenSchr/GeneticAlgorithm/blob/master/img/elite.JPG?raw=true" width="80%"/>
+<img src="https://github.com/BenSchr/GeneticAlgorithm/blob/master/img/gen0.JPG?raw=true" width="80%"/>
 
 
 ### 2. Elite-Size
 
 The 'Elite' parameter is used to determine the percentage of the fittest members that are allowed to reproduce. 
 
-<img src="https://github.com/BenSchr/GeneticAlgorithm/blob/master/img/gen0.JPG?raw=true" width="80%"/>
+<img src="https://github.com/BenSchr/GeneticAlgorithm/blob/master/img/elite.JPG?raw=true" width="80%"/>
 
 
 ### 3. Crossover
