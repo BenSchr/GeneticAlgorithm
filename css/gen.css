@@ -95,9 +95,9 @@ body {
 	.table{color:white}
 
 	.toast{
-		position:fixed;
+		position: fixed;
 		top:30;
-		right:30;
+		left:30;
 	}
 
 	#help{

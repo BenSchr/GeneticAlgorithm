@@ -195,7 +195,7 @@
     </div>
     </div>
 
-    <div class="toast" data-autohide="false" style="display: none;">
+    <div class="toast" data-autohide="false" >
         <div class="toast-header" style="background-color: rgb(233, 106, 106); color:white;border-color: inherit;">
             <strong class="mr-auto"><i class="fas fa-trophy"></i> Cool!</strong>
             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" style="color:white">&times;</button>
@@ -232,7 +232,7 @@ console.log(`%c
         var curplt = document.getElementById("curplt")
         var bestplt = document.getElementById("bestplt")
         var fitplt = document.getElementById("fitplt")
-        var limit = 1001
+        var limit = 11
 
         var stats = {}
         var genobj = {}
@@ -244,6 +244,8 @@ console.log(`%c
         var m = document.getElementById("mutationChance").value  //Mutation
         var e = document.getElementById("eliteSize").value   //Elite
         var r = document.getElementById("randomP").value  //Random 
+
+       
 
         var running = false
         var pauseflag = false
@@ -278,7 +280,9 @@ console.log(`%c
                 await Sleep(100);
                 if (pauseflag) break;
             }
-            if (g >= limit) $('.toast').toast('show');
+            if (g >= limit){
+                $('.toast').toast('show');
+            }
             running = false
             document.getElementById("play").innerHTML = "<i class='fas fa-play'></i> Start"
         }
@@ -366,6 +370,7 @@ console.log(`%c
 
         $(document).ready(function () {
             redraw();
+            $('.toast').toast('hide')
         })
 
 
