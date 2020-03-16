@@ -4,7 +4,7 @@
 
 
 **Link**: [Website](https://benschr.github.io/GeneticAlgorithm/geneticalg.html)    
-**Blog**: TBA
+**Blog**: [Blog](https://www.cologne-intelligence.de/blog/detail/show/genetische-algorithmen/)
 
 ## Controls
 
